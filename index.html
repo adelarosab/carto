@@ -12,19 +12,30 @@
       *::after,
       *::before {
         box-sizing: border-box;
+        position: relative;
       }
 
       body,
       html {
+        height: 100%;
         margin: 0;
         padding: 0;
+        width: 100%;
+      }
+
+      canvas {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
       }
     </style>
 
     <!-- My canvas -->
-    <canvas></canvas>
+    <canvas height="100%" width="100%"></canvas>
 
     <!-- Script -->
-    <script src="main-compiled.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

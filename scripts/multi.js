@@ -9,6 +9,8 @@ export default class MultiPolygon extends Polygon {
     options.fill = options.fill || '#000000';
     options.points = options.points || [];
     options.stroke = options.stroke || 'transparent';
+
+    this.options = options;
   }
 
   render() {
@@ -20,11 +22,15 @@ export default class MultiPolygon extends Polygon {
     context.fillStyle = options.fill;
     context.strokeStyle = options.stroke;
 
+    console.log(context.fillStyle);
+
     context.beginPath();
     context.moveTo(head[0], head[1]);
     for (let point of points) {
       context.lineTo(point[0], point[1]);
     }
     context.closePath();
+    context.fill();
+    context.stroke();
   }
 }

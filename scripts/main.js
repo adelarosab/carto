@@ -8,10 +8,8 @@ const map = new Map(
     offset: {x: -74.0001176973765, y: 40.7229325877763}
   }
 );
-const url = 'https://adelarosab.carto.com/api/v2/sql?' +
-  'api_key=f0b5fe2dc8782a41c30702815ab7c5fb6d17fa2d&' +
-  'q=select  ST_AsGeoJSON(the_geom) as geometry, firecomp from' +
-  ' public.mnmappluto';
+const url = 'https://rambo-test.carto.com/api/v2/sql?q=select' +
+  ' ST_AsGeoJSON(the_geom) as geometry, firecomp from public.mnmappluto';
 
 const colors = [
   'F44336',

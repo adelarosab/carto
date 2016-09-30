@@ -1,7 +1,9 @@
 import Polygon from './polygon';
+import Rect from './rect';
 
 const Shapes = {
-  Polygon
+  Polygon,
+  Rect
 };
 
 export default class Canvas {
@@ -29,6 +31,10 @@ export default class Canvas {
 
   Polygon(options) {
     return this.factory('Polygon', options);
+  }
+
+  Rect(options) {
+    return this.factory('Rect', options);
   }
 
   clear() {

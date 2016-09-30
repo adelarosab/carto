@@ -2,33 +2,27 @@ import Shape from './shape';
 
 export default class Polygon extends Shape {
   constructor(context, options = {}) {
-    super(context);
+    options = Object.assign({}, options);
+    options.points =
+      Array.isArray(options.points) ? options.points.slice(0) : [];
 
-    options = Object.assign(options);
-
-    options.fill = options.fill || '#000000';
-    options.points = options.points || [];
-    options.stroke = options.stroke || 'transparent';
-
-    this.options = options;
+    super(context, options);
   }
 
   render() {
-    const context = this.context;
-    const options = this.options;
-    const points = options.points.slice(0);
-    const head = points.shift();
+    super.render();
 
-    context.fillStyle = options.fill;
-    context.strokeStyle = options.stroke;
+    const context = this.context;
+    const points = this.options.points.slice(0);
+    const head = points.shift();
 
     // console.log('====');
     context.beginPath();
     // console.log(head);
-    context.moveTo(head[0], head[1]);
+    context.moveTo(head.x, head.y);
     for (let point of points) {
       // console.log(point);
-      context.lineTo(point[0], point[1]);
+      context.lineTo(point.x, point.y);
     }
     context.closePath();
     context.fill();

@@ -127,8 +127,7 @@ fetch(url)
 
         map.MultiPolygon(
           geometry.coordinates, {
-            fill: (isNull) ? 'transparent' : `#${color}`,
-            stroke: (isNull) ? '#212121' : 'transparent'
+            fill: isNull ? '#212121' : `#${color}`
           }
         );
       }
@@ -142,6 +141,34 @@ fetch(url)
       }
 
       legendEl.innerHTML = legendHTML;
+
+      // Init controls
+      const downEl = document.querySelector(
+        '[data-js="controls"] > button:nth-of-type(3)'
+      );
+      const leftEl = document.querySelector(
+        '[data-js="controls"] > button:nth-of-type(4)'
+      );
+      const rightEl = document.querySelector(
+        '[data-js="controls"] > button:nth-of-type(2)'
+      );
+      const upEl = document.querySelector(
+        '[data-js="controls"] > button:nth-of-type(1)'
+      );
+      const zoomInEl = document.querySelector(
+        '[data-js="zoom"] button:nth-of-type(1)'
+      );
+      const zoomOutEl = document.querySelector(
+        '[data-js="zoom"] button:nth-of-type(2)'
+      );
+
+      downEl.addEventListener('click', map.translate.bind(map, 0, -50));
+      leftEl.addEventListener('click', map.translate.bind(map, 50, 0));
+      rightEl.addEventListener('click', map.translate.bind(map, -50, 0));
+      upEl.addEventListener('click', map.translate.bind(map, 0, 50));
+      zoomInEl.addEventListener('click', map.zoom.bind(map, 1.25));
+      zoomOutEl.addEventListener('click', map.zoom.bind(map, .8));
+
 
       window.map = map;
     }

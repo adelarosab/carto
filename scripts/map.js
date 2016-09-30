@@ -12,15 +12,7 @@ export default class Map {
     this.canvas = new Canvas(canvas);
     this.options = options;
 
-    this.canvas.Rect(
-      {
-        fill: options.background,
-        height: canvas.height,
-        width: canvas.width,
-        x: 0,
-        y: 0
-      }
-    );
+    canvas.style.backgroundColor = options.background;
   }
 
   set offset(point) {
@@ -38,6 +30,14 @@ export default class Map {
       x: (latitude - offset.x) * 5000,
       y: (longitude - offset.y) * 5000
     };
+  }
+
+  translate() {
+    this.canvas.translate(...arguments);
+  }
+
+  zoom() {
+    this.canvas.zoom(...arguments);
   }
 
   MultiPolygon(polygons, options = {}) {

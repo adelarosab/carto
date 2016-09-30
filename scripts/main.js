@@ -8,9 +8,10 @@ const map = new Map(
     offset: {x: -74.0001176973765, y: 40.7229325877763}
   }
 );
-const url = 'https://rambo-test.carto.com/api/v2/sql?q=select' +
-  ' ST_AsGeoJSON(the_geom) as geometry, firecomp from public.mnmappluto';
-// + ' limit 5';
+const url = 'https://adelarosab.carto.com/api/v2/sql?' +
+  'api_key=f0b5fe2dc8782a41c30702815ab7c5fb6d17fa2d&' +
+  'q=select  ST_AsGeoJSON(the_geom) as geometry, firecomp from' +
+  ' public.mnmappluto';
 
 const colors = [
   'F44336',
@@ -168,7 +169,6 @@ fetch(url)
       upEl.addEventListener('click', map.translate.bind(map, 0, 50));
       zoomInEl.addEventListener('click', map.zoom.bind(map, 1.25));
       zoomOutEl.addEventListener('click', map.zoom.bind(map, .8));
-
 
       window.map = map;
     }
